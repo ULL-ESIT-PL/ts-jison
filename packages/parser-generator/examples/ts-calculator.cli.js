@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const Fs = require('fs');
 const ParserAndLexer = require('./ts-calculator'); // Note, imports ts-calc..., not js-calc...
 
