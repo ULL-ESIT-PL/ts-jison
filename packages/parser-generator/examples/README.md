@@ -21,7 +21,7 @@ See the [Makefile](Makefile) which has targets for
   - exectute against [calculator.input.txt](examples/calculator.input.txt) and send output to STDOUT
 - **ts-node-calculator-demo**
   - use [../lib/cli.js](../lib/cli.js) to generate `ts-calculator.ts` from [ts-calculator.jison](examples/ts-calculator.jison) (has typescript types)
-  - use `ts-node` to exectute `ts-calculator.ts` against [calculator.input.txt](examples/calculator.input.txt) and send output to STDOUT
+  - use `ts-node` to execute `ts-calculator.ts` against [calculator.input.txt](examples/calculator.input.txt) and send output to STDOUT
 
 ## ts-calculator-demo
 
