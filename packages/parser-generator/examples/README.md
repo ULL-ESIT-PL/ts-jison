@@ -39,7 +39,7 @@ The TS `hexlify` function is used to convert a string to a hex representation, a
 %%
 \s+                   if (yy.trace) yy.trace(`skipping whitespace ${hexlify(yytext)}`)
 ```
-Also in the grammar section, the ``yy.trace`variables is used to trace the parsing process:
+Also in the grammar section, the `yy.trace` variable is used to trace the parsing process:
 
 ```ts
 %% /* language grammar */
@@ -107,6 +107,47 @@ trace: skipping whitespace 0x20
 trace: skipping whitespace 0xa
 trace: returning 3.141592653589793
 PI + (3! / 3)^20 / (1+1)^10 / 1024 - 1 = 3.141592653589793
+```
+
+Here is the code of the `ts-calculator.cli.js` file that uses the generated parser:
+
+```js
+#!/usr/bin/env node
+const Fs = require('fs');
+const ParserAndLexer = require('./ts-calculator'); // Note, imports ts-calc..., not js-calc...
+
+// A YY class with a constructor can be passed to `parse`.
+class YyWithConstructor {
+  constructor (traceFlag) {
+    if (traceFlag) {
+      // js-calculator.jison calls yy.trace with skipped whitespace strings.
+      this.trace = function () { console.log('trace:', ...arguments); }
+    }
+  }
+}
+
+main(process.argv.slice(1));
+
+function main (args) {
+  if (!args[1]) {
+    console.warn(`Usage: ${args[0]} FILE`);
+    process.exit(1);
+  }
+  // Read truthiness of TRACE_CALC environment variable.
+  const traceFlag = ['false', 0, '', undefined].indexOf(process.env.TRACE_CALC) === -1;
+  // Read parser input.
+  const txt = require('fs').readFileSync(require('path').normalize(args[1]), "utf8");
+  // A YY object with no constructor will be invokved with Object.create.
+  const yyObjectTemplate = {
+    trace: function () { console.log('trace:', ...arguments); }
+  };
+  // Construct a parser pointing at the no-constructor YY object,
+  const res = new ParserAndLexer.TsCalcParser(yyObjectTemplate)
+        // but override it with a different YY class to show off logic.
+        .parse(txt, new YyWithConstructor(traceFlag));
+  // Print out results.
+  console.log(txt.trim(), '=', res);
+};
 ```
 
 - **ts-node-calculator-demo**
