@@ -22,6 +22,35 @@ See the [Makefile](Makefile) which has targets for
 
 ## ts-calculator-demo
 
+The grammar file contains some typescript type annotations, so we need to use the command line interface of ts-jison to generate a typescript parser.
+
+```ts
+%{
+function hexlify (str:string): string {
+  return str.split('')
+    .map(ch => '0x' + ch.charCodeAt(0).toString(16))
+    .join(', ')
+}
+%}
+```
+The TS `hexlify` function is used to convert a string to a hex representation, and is used in the lexer section to trace the input characters:
+
+```
+%%
+\s+                   if (yy.trace) yy.trace(`skipping whitespace ${hexlify(yytext)}`)
+```
+Also in the grammar section, the ``yy.trace`variables is used to trace the parsing process:
+
+```ts
+%% /* language grammar */
+
+expressions
+    : e EOF
+        { if (yy.trace) yy.trace('returning', $1);
+          return $1; }
+    ;
+```
+
 In the root folder of the project, run:
 
 ```
