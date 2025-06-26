@@ -22,7 +22,7 @@ See the [Makefile](Makefile) which has targets for
 
 ## ts-calculator-demo
 
-The grammar file contains some typescript type annotations, so we need to use the command line interface of ts-jison to generate a typescript parser.
+The grammar file contains some typescript type annotations in the head section of the grammar, so we need to use the command line interface of ts-jison to generate a typescript parser.
 
 ```ts
 %{
