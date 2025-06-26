@@ -19,6 +19,9 @@ See the [Makefile](Makefile) which has targets for
   - use [../lib/cli.js](../lib/cli.js) to generate `ts-calculator.ts` from [ts-calculator.jison](ts-calculator.jison) (has typescript types)
   - use `tsc` to compile `ts-calculator.js` from `ts-calculator.ts`
   - exectute against [calculator.input.txt](examples/calculator.input.txt) and send output to STDOUT
+- **ts-node-calculator-demo**
+  - use [../lib/cli.js](../lib/cli.js) to generate `ts-calculator.ts` from [ts-calculator.jison](examples/ts-calculator.jison) (has typescript types)
+  - use `ts-node` to exectute `ts-calculator.ts` against [calculator.input.txt](examples/calculator.input.txt) and send output to STDOUT
 
 ## ts-calculator-demo
 
@@ -150,7 +153,4 @@ function main (args) {
 };
 ```
 
-- **ts-node-calculator-demo**
-  - use [../lib/cli.js](../lib/cli.js) to generate `ts-calculator.ts` from [ts-calculator.jison](examples/ts-calculator.jison) (has typescript types)
-  - use `ts-node` to exectute `ts-calculator.ts` against [calculator.input.txt](examples/calculator.input.txt) and send output to STDOUT
 
