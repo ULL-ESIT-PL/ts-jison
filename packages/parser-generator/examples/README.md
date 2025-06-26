@@ -154,3 +154,32 @@ function main (args) {
 ```
 
 
+We can also use `ts-node` to execute the generated parser directly, without compiling it to js first.
+
+Let us remove the generated js parser first:
+```bash
+➜  examples git:(casiano) ✗ make clean
+rm  -f js-calculator.js ts-calculator.js ts-calculator.ts
+```
+Now we can generate the typescript parser from the jison grammar file:
+
+```bash
+➜  examples git:(casiano) ✗ ../lib/cli.js -t typescript -n TsCalc -o ts-calculator.ts ts-calculator.jison
+```
+See that there is not a `ts-calculator.js` file generated, only the `ts-calculator.ts` file:
+
+```bash
+➜  examples git:(casiano) ✗ ls ts-calculator.*
+ts-calculator.cli.js ts-calculator.jison  ts-calculator.ts
+➜  examples git:(casiano) ✗ npx ts-node ts-calculator.cli.js calculator.input.txt 
+PI + (3! / 3)^20 / (1+1)^10 / 1024 - 1 = 3.141592653589793
+➜  examples git:(casiano) ✗ 
+```
+
+However, if we use  `node` instead, we get an error:
+
+```bash
+➜  examples git:(casiano) ✗ node ts-calculator.cli.js calculator.input.txt 
+node:internal/modules/cjs/loader:1413
+Error: Cannot find module './ts-calculator'
+```

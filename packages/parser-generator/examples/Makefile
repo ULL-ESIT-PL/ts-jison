@@ -1,5 +1,5 @@
 clean:
-	rm js-calculator.js ts-calculator.js ts-calculator.ts
+	rm  -f js-calculator.js ts-calculator.js ts-calculator.ts
 
 # Javascript calculator
 js-calculator-demo: js-calculator.js
