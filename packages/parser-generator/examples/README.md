@@ -13,10 +13,10 @@ Generate compile and execute the usual calculator demo from both javascript (no 
 See the [Makefile](Makefile) which has targets for
 
 - **js-calculator-demo**
-  - use [../lib/cli.js](../lib/cli.js) to generate `js-calculator.js` from [js-calculator.jison](examples/js-calculator.jison) (has no typescript types)
-  - exectute `js-calculator.js` against [calculator.input.txt](examples/calculator.input.txt) and send output to STDOUT
+  - use [../lib/cli.js](../lib/cli.js) to generate `js-calculator.js` from [js-calculator.jison](js-calculator.jison) (has no typescript types)
+  - exectute `js-calculator.js` against [calculator.input.txt](calculator.input.txt) and send output to STDOUT
 - **ts-calculator-demo**
-  - use [../lib/cli.js](../lib/cli.js) to generate `ts-calculator.ts` from [ts-calculator.jison](examples/ts-calculator.jison) (has typescript types)
+  - use [../lib/cli.js](../lib/cli.js) to generate `ts-calculator.ts` from [ts-calculator.jison](ts-calculator.jison) (has typescript types)
   - use `tsc` to compile `ts-calculator.js` from `ts-calculator.ts`
   - exectute against [calculator.input.txt](examples/calculator.input.txt) and send output to STDOUT
 
