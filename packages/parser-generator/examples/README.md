@@ -92,7 +92,7 @@ node ts-calculator.cli.js calculator.input.txt
 PI + (3! / 3)^20 / (1+1)^10 / 1024 - 1 = 3.141592653589793
 ```
 
-If we execute it with the TRACE_CALC environment variable set, we get a trace
+If we execute it with the `TRACE_CALC` environment variable set, we get a trace
 
 ```
 ➜  examples git:(casiano) ✗ TRACE_CALC=1 node ts-calculator.cli.js calculator.input.txt 
